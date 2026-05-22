@@ -9,7 +9,17 @@ environ.Env.read_env(BASE_DIR / '.env')
 
 SECRET_KEY = env('SECRET_KEY', default='django-insecure-change-me-in-production-please')
 DEBUG      = env('DEBUG', default=True)
+# Find this line near the top:
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
+
+# ADD THESE LINES RIGHT BELOW IT:
+# Bulletproof fallback for Vercel routing
+ALLOWED_HOSTS.extend([
+    '.vercel.app',
+    'techvoto-lywk.vercel.app',
+    'techvoto-gilt.vercel.app',
+])
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -110,13 +120,20 @@ SIMPLE_JWT = {
     'UPDATE_LAST_LOGIN': True,
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
-
 # ── CORS ──
 CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=[
     'http://localhost:3000',
     'http://127.0.0.1:3000',
+    'https://techvoto-gilt.vercel.app',  # Add your production frontend
 ])
 CORS_ALLOW_CREDENTIALS = True
+
+# ADD THIS BLOCK: Required by Django 4.0+ for secure post requests
+CSRF_TRUSTED_ORIGINS = [
+    'https://techvoto-gilt.vercel.app',
+    'https://techvoto-lywk.vercel.app',
+]
+
 
 # ── Cache (Redis in production, LocMemCache in dev) ──
 CACHES = {
@@ -143,8 +160,12 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
 }
 
+
 # ── Production security hardening ──
 if not DEBUG:
+    # ADD THIS LINE: Tells Django it's safely behind Vercel's HTTPS proxy
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    
     SECURE_BROWSER_XSS_FILTER      = True
     SECURE_CONTENT_TYPE_NOSNIFF    = True
     SECURE_HSTS_SECONDS            = 31536000
