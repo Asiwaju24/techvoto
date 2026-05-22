@@ -10,16 +10,16 @@ environ.Env.read_env(BASE_DIR / '.env')
 SECRET_KEY = env('SECRET_KEY', default='django-insecure-change-me-in-production-please')
 DEBUG      = env('DEBUG', default=True)
 # Find this line near the top:
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
-
-# ADD THESE LINES RIGHT BELOW IT:
-# Bulletproof fallback for Vercel routing
-ALLOWED_HOSTS.extend([
-    '.vercel.app',
-    'techvoto-lywk.vercel.app',
+ALLOWED_HOSTS = [
+    '*',                           # Catch-all wildcard safe for Render/Vercel networks
+    '.onrender.com',               # Allows any Render subdomain
+    'techvoto.onrender.com',       # Your specific backend live URL
+    '.vercel.app',                 # Keeps compatibility with your frontend Vercel routing
+    'techvoto-lywk.vercel.app', 
     'techvoto-gilt.vercel.app',
-])
-
+    'localhost',
+    '127.0.0.1',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -129,11 +129,12 @@ CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=[
 CORS_ALLOW_CREDENTIALS = True
 
 # ADD THIS BLOCK: Required by Django 4.0+ for secure post requests
+# Update this block to include your Render URL
 CSRF_TRUSTED_ORIGINS = [
     'https://techvoto-gilt.vercel.app',
     'https://techvoto-lywk.vercel.app',
+    'https://techvoto.onrender.com',      # Add your Render backend domain here
 ]
-
 
 # ── Cache (Redis in production, LocMemCache in dev) ──
 CACHES = {
