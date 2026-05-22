@@ -124,7 +124,8 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=[
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-    'https://techvoto-gilt.vercel.app',  # Add your production frontend
+    'https://techvoto-gilt.vercel.app',
+    'https://techvoto-1.onrender.com',  # Add your production frontend
 ])
 CORS_ALLOW_CREDENTIALS = True
 
@@ -133,7 +134,8 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     'https://techvoto-gilt.vercel.app',
     'https://techvoto-lywk.vercel.app',
-    'https://techvoto.onrender.com',      # Add your Render backend domain here
+    'https://techvoto.onrender.com',      
+    'https://techvoto-1.onrender.com',
 ]
 
 # ── Cache (Redis in production, LocMemCache in dev) ──
