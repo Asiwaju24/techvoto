@@ -2,10 +2,10 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://techvoto-lywk.vercel.app/api/:path*"
+      "destination": "https://techvoto.onrender.com/api/:path*"
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!api).*)" ,
       "destination": "/index.html"
     }
   ]
