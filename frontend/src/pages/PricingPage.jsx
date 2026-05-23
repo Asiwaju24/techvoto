@@ -10,10 +10,10 @@ export default function PricingPage() {
     { icon:'🌱', name:'Free',  monthly:0,  annually:0,  desc:'Perfect for students just getting started.',
       features:[{ok:true,t:'5 free courses'},{ok:true,t:'Community access'},{ok:true,t:'1 project lab/month'},{ok:false,t:'Mentorship sessions'},{ok:false,t:'Certifications'},{ok:false,t:'Priority support'}],
       cta:'Get Started Free', btn:'btn-outline', featured:false },
-    { icon:'⚡', name:'Pro',   monthly:19, annually:15, desc:'Everything you need to grow fast in tech.',
+    { icon:'⚡', name:'Pro',   monthly:25000, annually:15000, desc:'Everything you need to grow fast in tech.',
       features:[{ok:true,t:'All 300+ courses'},{ok:true,t:'Community access'},{ok:true,t:'Unlimited project labs'},{ok:true,t:'4 mentorship sessions/mo'},{ok:true,t:'All certifications'},{ok:true,t:'Priority support'}],
       cta:'Start Pro', btn:'btn-primary', featured:true },
-    { icon:'🏢', name:'Teams', monthly:49, annually:39, desc:'Upskill your entire team at scale.',
+    { icon:'🏢', name:'Teams', monthly:4900, annually:3900, desc:'Upskill your entire team at scale.',
       features:[{ok:true,t:'Everything in Pro'},{ok:true,t:'Team analytics dashboard'},{ok:true,t:'Custom learning paths'},{ok:true,t:'Dedicated success manager'},{ok:true,t:'SSO & SAML'},{ok:true,t:'SLA guarantee'}],
       cta:'Contact Sales', btn:'btn-outline', featured:false },
   ]
@@ -52,10 +52,10 @@ export default function PricingPage() {
             <div style={{fontSize:'2rem',marginBottom:'1rem'}}>{p.icon}</div>
             <div style={{fontSize:'0.9rem',fontWeight:700,color:'var(--text-muted)',letterSpacing:'0.05em',textTransform:'uppercase'}}>{p.name}</div>
             <div style={{display:'flex',alignItems:'baseline',gap:'0.3rem',margin:'0.8rem 0 0.3rem'}}>
-              <span style={{fontFamily:'Syne,sans-serif',fontSize:'3rem',fontWeight:800,letterSpacing:'-2px',lineHeight:1}}>${annual?p.annually:p.monthly}</span>
+              <span style={{fontFamily:'Syne,sans-serif',fontSize:'3rem',fontWeight:800,letterSpacing:'-2px',lineHeight:1}}>₦{annual?p.annually:p.monthly}</span>
               <span style={{fontSize:'0.9rem',color:'var(--text-muted)'}}>/mo</span>
             </div>
-            {annual && p.monthly>0 && <div style={{fontSize:'0.8rem',color:'var(--accent3)',marginBottom:'0.4rem'}}>Billed ${(annual?p.annually:p.monthly)*12}/year</div>}
+            {annual && p.monthly>0 && <div style={{fontSize:'0.8rem',color:'var(--accent3)',marginBottom:'0.4rem'}}>Billed ₦{(annual?p.annually:p.monthly)*12}/year</div>}
             <p style={{fontSize:'0.85rem',color:'var(--text-muted)',lineHeight:1.6,marginBottom:'1.5rem'}}>{p.desc}</p>
             <hr style={{border:'none',borderTop:'1px solid var(--border)',margin:'1.2rem 0'}}/>
             <div style={{display:'flex',flexDirection:'column',gap:'0.6rem',marginBottom:'1.8rem'}}>

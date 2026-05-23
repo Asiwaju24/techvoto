@@ -28,13 +28,6 @@ export default function ContactPage() {
         <div style={{background:'var(--card-bg)',border:'1px solid var(--border)',borderRadius:'var(--radius-xl)',padding:'2.5rem',backdropFilter:'blur(12px)'}}>
           <h2 style={{fontSize:'1.4rem',letterSpacing:'-0.5px',marginBottom:'0.4rem'}}>Send Us a Message</h2>
           <p style={{fontSize:'0.88rem',color:'var(--text-muted)',marginBottom:'1.5rem'}}>We respond within 4 hours on business days.</p>
-          <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:'0.4rem',marginBottom:'1.5rem'}}>
-            {[{icon:'💬',l:'General'},{icon:'🏢',l:'Enterprise'},{icon:'🤝',l:'Partnership'}].map(t => (
-              <div key={t.l} onClick={()=>setType(t.l)} style={{padding:'0.6rem 0.3rem',textAlign:'center',borderRadius:'var(--radius)',border:`1px solid ${type===t.l?'var(--accent)':'var(--border)'}`,background:type===t.l?'rgba(79,140,255,0.1)':'transparent',cursor:'pointer',fontSize:'0.78rem',fontWeight:600,color:type===t.l?'var(--accent)':'var(--text-muted)'}}>
-                <span style={{display:'block',fontSize:'1.2rem',marginBottom:'0.2rem'}}>{t.icon}</span>{t.l}
-              </div>
-            ))}
-          </div>
           {sent ? <div className="alert alert-success">✅ Message sent! We'll get back to you within 4 hours.</div> : (
             <form onSubmit={handleSubmit}>
               {error && <div className="alert alert-error">❌ {error}</div>}
@@ -52,7 +45,7 @@ export default function ContactPage() {
         </div>
         <div>
           <h2 style={{fontSize:'1.3rem',letterSpacing:'-0.5px',marginBottom:'1rem'}}>Other Ways to Reach Us</h2>
-          {[{icon:'📧',bg:'rgba(79,140,255,0.1)',t:'Email',v:'hello@techvoto.com',href:'mailto:hello@techvoto.com'},{icon:'💬',bg:'rgba(0,229,195,0.1)',t:'WhatsApp',v:'Join our community',href:'https://chat.whatsapp.com/JCkROhTSY3h6fNkjpixnWe'},{icon:'🐦',bg:'rgba(162,89,255,0.1)',t:'Twitter',v:'@Techvotos',href:'https://x.com/Techvotos'}].map(i => (
+          {[{icon:'📧',bg:'rgba(79,140,255,0.1)',t:'Email',v:'techvoto@gmail.com',href:'mailto:techvoto@gmail.com'},{icon:'💬',bg:'rgba(0,229,195,0.1)',t:'WhatsApp',v:'Join our community',href:'https://chat.whatsapp.com/JCkROhTSY3h6fNkjpixnWe'},{icon:'🐦',bg:'rgba(162,89,255,0.1)',t:'Twitter',v:'@Techvotos',href:'https://x.com/Techvotos'}].map(i => (
             <div key={i.t} style={{background:'var(--card-bg)',border:'1px solid var(--border)',borderRadius:'var(--radius)',padding:'1.2rem',backdropFilter:'blur(10px)',display:'flex',gap:'1rem',alignItems:'flex-start',marginBottom:'1rem',transition:'all var(--transition)',cursor:'pointer'}} onMouseEnter={e=>e.currentTarget.style.borderColor='var(--accent)'} onMouseLeave={e=>e.currentTarget.style.borderColor='var(--border)'}>
               <div style={{width:'40px',height:'40px',borderRadius:'10px',background:i.bg,display:'flex',alignItems:'center',justifyContent:'center',fontSize:'1rem',flexShrink:0}}>{i.icon}</div>
               <div><h4 style={{fontSize:'0.88rem',fontWeight:700,marginBottom:'0.2rem'}}>{i.t}</h4><a href={i.href} target="_blank" rel="noreferrer" style={{fontSize:'0.82rem',color:'var(--text-muted)'}}>{i.v}</a></div>

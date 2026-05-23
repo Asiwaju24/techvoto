@@ -51,17 +51,7 @@ export default function SignupPage() {
               <div className="form-group"><label className="form-label">Email</label><input className="form-input" type="email" placeholder="you@example.com" required value={form.email} onChange={e=>set('email',e.target.value)}/></div>
               <div className="form-group"><label className="form-label">Password</label><input className="form-input" type="password" placeholder="Min 8 characters" required minLength={8} value={form.password} onChange={e=>set('password',e.target.value)}/></div>
               <div className="form-group"><label className="form-label">Confirm Password</label><input className="form-input" type="password" placeholder="Repeat password" required value={form.password2} onChange={e=>set('password2',e.target.value)}/></div>
-              <div style={{marginBottom:'1.2rem'}}>
-                <label className="form-label" style={{marginBottom:'0.6rem',display:'block'}}>Plan</label>
-                <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:'0.6rem'}}>
-                  {[{k:'free',l:'Free',s:'Get started'},{k:'pro',l:'Pro',s:'$19/mo'},{k:'teams',l:'Teams',s:'$49/mo'}].map(p => (
-                    <div key={p.k} onClick={()=>set('plan',p.k)} style={{padding:'0.7rem 0.5rem',textAlign:'center',borderRadius:'var(--radius)',border:`1px solid ${form.plan===p.k?'var(--accent)':'var(--border)'}`,background:form.plan===p.k?'rgba(79,140,255,0.08)':'transparent',cursor:'pointer'}}>
-                      <span style={{display:'block',fontSize:'0.78rem',fontWeight:600}}>{p.l}</span>
-                      <small style={{fontSize:'0.7rem',color:'var(--text-muted)'}}>{p.s}</small>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              
               <button className="btn btn-primary btn-full" type="submit" disabled={loading}>{loading?'Creating…':'Create Account →'}</button>
               <p style={{fontSize:'0.76rem',color:'var(--text-dim)',textAlign:'center',marginTop:'1rem'}}>By signing up you agree to our <Link to="/terms" style={{color:'var(--accent)'}}>Terms</Link> and <Link to="/privacy" style={{color:'var(--accent)'}}>Privacy Policy</Link>.</p>
             </form>
